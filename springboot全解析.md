@@ -68,5 +68,15 @@ SpringFactoriesLoader作用
 
 
 
+整合apollo监听：
 
+```
+@ApolloConfigChangeListener
+    public void onChange(ConfigChangeEvent changeEvent) {
+        for (String key : changeEvent.changedKeys()) {
+            ConfigChange change = changeEvent.getChange(key);
+            System.out.println(String.format("Found change - key: %s, oldValue: %s, newValue: %s, changeType: %s", change.getPropertyName(), change.getOldValue(), change.getNewValue(), change.getChangeType()));
+        }
+    }
+```
 
